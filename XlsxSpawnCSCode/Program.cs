@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using ConfigData;
 using LitJson;
 
 namespace XlsxSpawnCSCode
@@ -41,18 +40,9 @@ namespace XlsxSpawnCSCode
             /*var code= XlsxSpawnCode.SpawnDataManageCode(data);
             File.WriteAllText(@"D:\code\codeNet\projects\XlsxSpawnCSCode\XlsxSpawnCSCode\spawn.cs",code.ToString());*/
             var json = JsonMapper.ToJson(data.GetDicData());
-            var c = GetConfig(json);
             Console.WriteLine("ok");
 
         }
-        
-        
-        public static ConfigDataManage GetConfig(string json)
-        {
-            var c = new ConfigDataManage();
-            c.InitJson(json);
-            return c;
-        }
-        
+
     }
 }

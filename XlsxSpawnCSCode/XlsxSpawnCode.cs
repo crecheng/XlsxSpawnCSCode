@@ -1,12 +1,16 @@
 using System.Collections.Generic;
 using System.Text;
-using ConfigData;
 using LitJson;
 
 namespace XlsxSpawnCSCode
 {
     public static class XlsxSpawnCode
     {
+        /// <summary>
+        /// 从表格获取类信息
+        /// </summary>
+        /// <param name="xlsx">表格数据</param>
+        /// <returns></returns>
         public static List<OneClass> SpawnFormXlsx(XlsxData xlsx)
         {
             List<OneClass> list = new List<OneClass>();
@@ -33,11 +37,21 @@ namespace XlsxSpawnCSCode
             return list;
         }
 
+        /// <summary>
+        /// 从表格生成数据代码
+        /// </summary>
+        /// <param name="xlsx">表格</param>
+        /// <returns></returns>
         public static StringBuilder SpawnDataManageCode(XlsxData xlsx)
         {
             return SpawnDataManageCode(SpawnFormXlsx(xlsx));
         }
 
+        /// <summary>
+        /// 生成管理类代码
+        /// </summary>
+        /// <param name="oneClasses">类信息</param>
+        /// <returns></returns>
         public static StringBuilder SpawnDataManageCode(List<OneClass> oneClasses)
         {
             StringBuilder s = new StringBuilder();
