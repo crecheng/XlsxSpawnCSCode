@@ -139,6 +139,11 @@ namespace XlsxSpawnCSCode
                 s.Append(" \n\t\t\t\treturn list;");
                 s.Append($"\n\t\t\tthrow new Exception($\"Config Data Error : No {{{one.IdKeyName.ToLower()}}} in {cName}Config\");");
                 s.Append( "\n\t\t}");
+                
+                //通过key获取首个数据，方便在key唯一时使用
+                s.Append("\n");
+                s.Append($"\n\t\tpublic {cName} Get{cName}DataFirst({one.KeyType} {one.IdKeyName.ToLower()})")
+                    .Append($" => Get{cName}Data({one.IdKeyName.ToLower()})[0];");
                 s.Append("\n");
             }
             
