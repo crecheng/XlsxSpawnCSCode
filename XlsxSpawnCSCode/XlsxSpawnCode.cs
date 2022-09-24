@@ -18,7 +18,7 @@ namespace XlsxSpawnCSCode
             {
                 var one = new OneClass(x.Name);
                 one.IdKeyName = x.IdKeyName;
-                one.IdKeyType = ItemTool.GetItemType(x.IdKeyType);
+                one.IdKeyType =ItemHelper.StringHelp(x.IdKeyType).Type;
                 for (int i = 0; i < x.KeyType.Count; i++)
                 {
                     var key = x.KeyName[i];
@@ -28,7 +28,7 @@ namespace XlsxSpawnCSCode
                     {
                         Describe = des,
                         Name = key.Data,
-                        Type = ItemTool.GetItemType(type.Data),
+                        Type = ItemHelper.StringHelp(type.Data).Type,
                     });
                 }
                 list.Add(one);

@@ -88,7 +88,7 @@ namespace XlsxSpawnCSCode
             if (string.IsNullOrEmpty(data))
                 return _defaultData[type];
             
-            switch (ItemTool.GetItemType(type))
+            switch (ItemHelper.StringHelp(type).Type)
             {
                 case ItemType.Float:
                     if (float.TryParse(data, out float f))
@@ -119,7 +119,7 @@ namespace XlsxSpawnCSCode
             if (data.Count<=0)
                 return _defaultData[type];
             List<object> res = new List<object>();
-            switch (ItemTool.GetItemType(type))
+            switch (ItemHelper.StringHelp(type).Type)
             {
                 case ItemType.FloatArray:
                     foreach (var s1 in data)

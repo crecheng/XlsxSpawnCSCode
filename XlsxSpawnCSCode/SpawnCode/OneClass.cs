@@ -11,7 +11,7 @@ namespace XlsxSpawnCSCode
         public List<ISpawn> Items;
         public string IdKeyName;
         public ItemType IdKeyType;
-        public string KeyType => Item.TypeGetString(IdKeyType);
+        public string KeyType =>ItemHelper.TypeHelp(IdKeyType).TypeName;
         public string Name;
 
         public OneClass(string name)

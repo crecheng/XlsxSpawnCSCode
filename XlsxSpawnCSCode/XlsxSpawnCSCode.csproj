@@ -50,6 +50,7 @@
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="SpawnCode\ISpawn.cs" />
         <Compile Include="SpawnCode\Item.cs" />
+        <Compile Include="SpawnCode\ItemHelper.cs" />
         <Compile Include="SpawnCode\ItemType.cs" />
         <Compile Include="SpawnCode\OneClass.cs" />
         <Compile Include="XlsxSpawnCode.cs" />
