@@ -7,6 +7,10 @@ namespace XlsxSpawnCSCode
     {
         public List<SheetData> Datas=new List<SheetData>();
 
+        /// <summary>
+        /// 将表格数据转换成字典数据，方便转json
+        /// </summary>
+        /// <returns></returns>
         public Dictionary<string, object> GetDicData()
         {
             Dictionary<string, object> res = new Dictionary<string, object>();

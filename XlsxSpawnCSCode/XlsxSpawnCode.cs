@@ -62,6 +62,7 @@ namespace XlsxSpawnCSCode
             s.Append("\n");
             s.Append("\nnamespace ConfigData");
 
+            //生成表格数据类
             s.Append("\n{");
             foreach (var one in oneClasses)
             {
@@ -69,9 +70,8 @@ namespace XlsxSpawnCSCode
                 s.Append("\n\n");
             }
 
-            
+            //生存json数据类
             s.Append("\n\tclass ConfigJsonData");
-
             s.Append("\n\t{");
             foreach (var one in oneClasses)
             {
@@ -80,6 +80,7 @@ namespace XlsxSpawnCSCode
 
             s.Append("\n\t}");
             
+            //生成数据管理类
             s.Append("\n\tpublic class ConfigDataManage");
             s.Append("\n\t{");
 
@@ -89,6 +90,7 @@ namespace XlsxSpawnCSCode
                     .Append($"= new Dictionary<{one.KeyType}, List<{one.Name}>>();");
             }
 
+            //将json数据解析成字典数据，方便获取
             s.Append("\n");
             s.Append("\n\t\tpublic void InitJson(string json)");
             s.Append("\n\t\t{");
@@ -117,16 +119,20 @@ namespace XlsxSpawnCSCode
             }
             s.Append("\n\t\t}");
             
+            //数据类的一些公开接口
             foreach (var one in oneClasses)
             {
                 var cName = one.Name;
+                //是否有该key
                 s.Append("\n");
                 s.Append($"\n\t\tpublic bool HasKey{cName}({one.KeyType} {one.IdKeyName.ToLower()}) =>")
                     .Append($" _{cName}Dictionary.ContainsKey({one.IdKeyName.ToLower()});");
                 s.Append("\n");
+                //获取KeyCollection
                 s.Append($"\n\t\tpublic Dictionary<{one.KeyType}, List<{cName}>>.KeyCollection ")
                     .Append($"Get{cName}KeyCollection() => _{cName}Dictionary.Keys;");
                 s.Append("\n");
+                //通过key获取数据
                 s.Append($"\n\t\tpublic List<{cName}> Get{cName}Data({one.KeyType} {one.IdKeyName.ToLower()})");
                 s.Append( "\n\t\t{");
                 s.Append($"\n\t\t\tif (_{cName}Dictionary.TryGetValue({one.IdKeyName.ToLower()}, out var list))");
@@ -137,7 +143,6 @@ namespace XlsxSpawnCSCode
             }
             
             s.Append("\n\t}");
-            
             s.Append("\n}");
             
             

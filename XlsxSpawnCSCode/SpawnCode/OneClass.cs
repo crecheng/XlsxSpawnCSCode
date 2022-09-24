@@ -3,6 +3,9 @@ using System.Text;
 
 namespace XlsxSpawnCSCode
 {
+    /// <summary>
+    /// 类信息
+    /// </summary>
     public class OneClass : ISpawn
     {
         public List<ISpawn> Items;
