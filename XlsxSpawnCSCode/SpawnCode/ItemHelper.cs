@@ -42,19 +42,29 @@ namespace XlsxSpawnCSCode
             { "short[]", new ItemHelper() { _type = ItemType.ShortArray, _typeName = "short[]" } },
         };
 
+        /// <summary>
+        /// type转类型string
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public static ItemHelper TypeHelp(ItemType type)
         {
             if (TypeToObj.ContainsKey(type))
                 return TypeToObj[type];
-            Console.WriteLine("类型未支持！");
+            Console.WriteLine("类型未支持！使用默认string");
             return TypeToObj[ItemType.String];
         }
         
+        /// <summary>
+        /// string转type
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public static ItemHelper StringHelp(string s)
         {
             if (StringToObj.ContainsKey(s))
                 return StringToObj[s];
-            Console.WriteLine("类型未支持！");
+            Console.WriteLine("类型未支持！使用默认string");
             return StringToObj["string"];
         }
         
