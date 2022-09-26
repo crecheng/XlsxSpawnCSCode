@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Text;
-using LitJson;
 
 namespace XlsxSpawnCSCode
 {
@@ -57,7 +56,7 @@ namespace XlsxSpawnCSCode
             StringBuilder s = new StringBuilder();
             s.Append("\nusing System.Collections.Generic;");
             s.Append("\nusing System;");
-            s.Append("\nusing LitJson;");
+            s.Append("\nusing CustomLitJson;");
             s.Append("\nusing UnityEngine;");
             s.Append("\n");
             s.Append("\nnamespace ConfigData");
@@ -94,7 +93,7 @@ namespace XlsxSpawnCSCode
             s.Append("\n");
             s.Append("\n\t\tpublic void InitJson(string json)");
             s.Append("\n\t\t{");
-            s.Append("\n\t\t\tvar data = JsonMapper.ToObject<ConfigJsonData>(json);");
+            s.Append("\n\t\t\tvar data = JsonMapper.Instance.ToObject<ConfigJsonData>(json);");
             
             foreach (var one in oneClasses)
             {

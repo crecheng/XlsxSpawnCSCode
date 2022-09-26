@@ -36,9 +36,6 @@
         <Reference Include="EPPlus.Core">
           <HintPath>EPPlus.Core.dll</HintPath>
         </Reference>
-        <Reference Include="LitJSON, Version=0.18.0.0, Culture=neutral, processorArchitecture=MSIL">
-          <HintPath>..\packages\LitJson.0.18.0\lib\net45\LitJSON.dll</HintPath>
-        </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
@@ -47,6 +44,16 @@
     <ItemGroup>
         <Compile Include="Debug.cs" />
         <Compile Include="Example\ConfigData.cs" />
+        <Compile Include="LitJson\IJsonWrapper.cs" />
+        <Compile Include="LitJson\JsonData.cs" />
+        <Compile Include="LitJson\JsonException.cs" />
+        <Compile Include="LitJson\JsonMapper.cs" />
+        <Compile Include="LitJson\JsonMapperHelper.cs" />
+        <Compile Include="LitJson\JsonReader.cs" />
+        <Compile Include="LitJson\JsonThreadMapper.cs" />
+        <Compile Include="LitJson\JsonWriter.cs" />
+        <Compile Include="LitJson\Lexer.cs" />
+        <Compile Include="LitJson\ParserToken.cs" />
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="SpawnCode\ISpawn.cs" />
@@ -62,9 +69,6 @@
         <Compile Include="Xlsx\SheetData.cs" />
         <Compile Include="Xlsx\Tool.cs" />
         <Compile Include="Xlsx\XlsxData.cs" />
-    </ItemGroup>
-    <ItemGroup>
-      <None Include="packages.config" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

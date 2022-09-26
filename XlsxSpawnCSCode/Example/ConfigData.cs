@@ -1,7 +1,7 @@
 
 using System.Collections.Generic;
 using System;
-using LitJson;
+using CustomLitJson;
 using UnityEngine;
 
 namespace ConfigData
@@ -50,7 +50,7 @@ public partial class Monster
 
 		public void InitJson(string json)
 		{
-			var data = JsonMapper.ToObject<ConfigJsonData>(json);
+			var data = JsonMapper.Instance.ToObject<ConfigJsonData>(json);
 			if (data.ItemData != null)
 			{
 				foreach (var i in data.ItemData)

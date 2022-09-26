@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using LitJson;
+using ConfigData;
+using CustomLitJson;
+
 
 namespace XlsxSpawnCSCode
 {
@@ -16,8 +18,10 @@ namespace XlsxSpawnCSCode
             var data= ReadXlsx.Read(filePath);
             Console.WriteLine(data);
             //生成json
-            var json = JsonMapper.ToJson(data.GetDicData());
+            JsonMapper.DirectOutputChineseCharacters = true;
+            var json = JsonMapper.Instance.ToJson(data.GetDicData());
             File.WriteAllText(path+"config.json",json);
+            var obj= JsonMapper.Instance.ToObject<ConfigJsonData>(json);
             //生成代码
             var codes= XlsxSpawnCode.SpawnDataManageCode(data);
             File.WriteAllText(path+"ConfigData.cs",codes.ToString());
