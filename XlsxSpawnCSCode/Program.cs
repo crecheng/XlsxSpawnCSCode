@@ -10,39 +10,19 @@ namespace XlsxSpawnCSCode
     {
         public static void Main(string[] args)
         {
-            OneClass oneClass = new OneClass("GameData1");
-            oneClass.Add(new Item()
-            {
-                Type = ItemType.Int32,
-                Name = "O1",
-                Describe = "hhhhh"
-            });
-            oneClass.Add(new Item()
-            {
-                Type = ItemType.Int32Array,
-                Name = "O2",
-                Describe = "hhhhh"
-            });
-            oneClass.Add(new Item()
-            {
-                Type = ItemType.String,
-                Name = "O3",
-                Describe = "hhhhh"
-            });
-            StringBuilder a = new StringBuilder();
-            oneClass.Spawn(a);
-            Console.WriteLine(a);
-
-
-            var file = @"C:\Users\Crecheng\Desktop\2\Entity.xlsx";
-            var data= ReadXlsx.Read(file);
+            var path = "..\\..\\Example\\";
+            var filePath = path+"Example.xlsx";
+            //读取表格数据
+            var data= ReadXlsx.Read(filePath);
             Console.WriteLine(data);
-            /*var code= XlsxSpawnCode.SpawnDataManageCode(data);
-            File.WriteAllText(@"D:\code\codeNet\projects\XlsxSpawnCSCode\XlsxSpawnCSCode\spawn.cs",code.ToString());*/
+            //生成json
             var json = JsonMapper.ToJson(data.GetDicData());
-            Console.WriteLine("ok");
+            File.WriteAllText(path+"config.json",json);
+            //生成代码
+            var codes= XlsxSpawnCode.SpawnDataManageCode(data);
+            File.WriteAllText(path+"ConfigData.cs",codes.ToString());
+            Console.WriteLine("ok!");
 
         }
-
     }
 }

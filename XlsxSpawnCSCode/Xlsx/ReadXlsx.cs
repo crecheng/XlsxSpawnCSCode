@@ -72,7 +72,7 @@ namespace XlsxSpawnCSCode
                 return null;
             SheetData data = new SheetData();
             List<int> num = new List<int>();
-            data.Name = sheet.Name;
+            data.Name = sheet.GetValue<string>(1,1);
             var rowEnd = sheet.Dimension.End.Row;
             var cellEnd = sheet.Dimension.End.Column;
             var keyCell = new CellData();
@@ -80,9 +80,9 @@ namespace XlsxSpawnCSCode
             //读取表的格式定义
             for (int j = 1; j <= cellEnd; j++)
             {
-                var des=sheet.GetValue<string>(1, j);
-                var key=sheet.GetValue<string>(2, j);
-                var type=sheet.GetValue<string>(3, j);
+                var des=sheet.GetValue<string>(2, j);
+                var key=sheet.GetValue<string>(3, j);
+                var type=sheet.GetValue<string>(4, j);
                 if (j == 1)
                 {
                     data.IdKeyName = key;
@@ -116,7 +116,7 @@ namespace XlsxSpawnCSCode
                 }
             }
 
-            for (int i = 4; i <= rowEnd; i++)
+            for (int i = 5; i <= rowEnd; i++)
             {
                 RowData row = new RowData();
                 int cellIndex = 0;
