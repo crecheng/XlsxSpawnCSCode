@@ -77,6 +77,7 @@ namespace XlsxSpawnCSCode
             var cellEnd = sheet.Dimension.End.Column;
             var keyCell = new CellData();
             var keyType = new CellData();
+            var maxLen = 0;
             //读取表的格式定义
             for (int j = 1; j <= cellEnd; j++)
             {
@@ -113,6 +114,8 @@ namespace XlsxSpawnCSCode
                         keyCell = new CellData();
                         keyType = new CellData();
                     }
+
+                    maxLen = j;
                 }
             }
 
@@ -122,7 +125,7 @@ namespace XlsxSpawnCSCode
                 int cellIndex = 0;
                 //读取每个格子
                 CellData cell = new CellData();
-                for (int j = 1; j <= cellEnd; j++)
+                for (int j = 1; j <= maxLen; j++)
                 {
                     var key = data.KeyName[cellIndex];
                     var s = sheet.GetValue<string>(i, j);
